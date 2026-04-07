@@ -9,8 +9,8 @@ class Database extends PDO
 {
     public function __construct()
     {
-        $username = 'formation';
-        $password = 'paris';
+        $username = 'rania';
+        $password = 'formation';
         $host = '127.0.0.1';
         $port = 3306;
         $dbName = 'php_poo';
