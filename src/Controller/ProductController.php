@@ -32,7 +32,7 @@ class ProductController extends Controller
                 $extensions = [
                     'image/jpeg' => 'jpg',
                     'image/png' => 'png',
-                    'image/webp' => 'webp'
+                    'image/webp' => 'webp',
                 ];
 
                 if (!in_array($mimeType, $allowedTypes)) {
