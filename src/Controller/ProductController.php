@@ -40,10 +40,18 @@ class ProductController extends Controller
              * @info faille XSS stocké
              * les données recupéré ne sont pas controllés
              */
+
+            $title = htmlspecialchars($_POST['title']);
+
             $product->setTitle($_POST['title'])
                 ->setSlug(UtilitiesService::slugify($_POST['title']))
-                ->setDescription($_POST['description'])
-                ->setPrice($_POST['price']);
+                ->setDescription(htmlspecialchars($_POST['description']))
+                ->setPrice(filter_var($_POST['price'], FILTER_VALIDATE_FLOAT, [
+                    'options' => [
+                        'min_range' => 0,
+                    ],
+                    'flags' => FILTER_FLAG_ALLOW_FRACTION
+                ]));
 
             $entityManager = new EntityManager();
             $entityManager->persist($product);
